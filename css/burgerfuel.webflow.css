@@ -5,14 +5,15 @@
   width: 100%;
   height: 100vh;
   position: absolute;
+  opacity: 0.5;
 }
 
 .texture_overlay {
   z-index: 1;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   pointer-events: none;
   mix-blend-mode: color-dodge;
-  background-image: url("../images/grunge-texture-background.webp");
+  background-image: url("../images/cosmic-swamp-bg.png");
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,6 +21,20 @@
   height: 100vh;
   display: none;
   position: absolute;
+  filter: saturate(40%) brightness(110%);
+}
+
+.albumArt {
+  z-index: 2;
+  cursor: pointer;
+  background-image: url("../images/cosmic-swamp-art.png");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .vinyl_overlay {
@@ -33,6 +48,18 @@
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+#black-circle {
+  width: 12px;
+  height: 12px;
+  background-color: #080808;
+  border-radius: 50%; /* Makes it a circle */
+  position: fixed; /* Ensures it stays in the same place even when scrolling */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the circle */
+  z-index: 9999; /* Ensures it's above all other layers */
 }
 
 .loading_div {
@@ -59,4 +86,63 @@
   background-position: 0 0, 50%;
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
+}
+
+body {
+  background-color: #000;
+}
+canvas {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+#no-audio {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: 300px;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  font-size: 14px;
+  border: 1px solid #ff667f;
+  border-radius: 3px;
+  background: #ff3354;
+  color: #ffe5ea;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+}
+#no-audio h1 {
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0 0 1em;
+}
+#no-audio p {
+  color: #ffccd4;
+  margin: 0 0 1em;
+}
+#no-audio a {
+  color: #fff;
+}
+#vinyl {
+  transform: translate(-50%, -50%);
+  width: calc(max(100vw, 100vh) / 10 * 3);
+  height: calc(max(100vw, 100vh) / 10 * 3);
+}
+#albumArt {
+  transform: translate(-50%, -50%);
+  width: calc(max(100vw, 100vh) / 10);
+  height: calc(max(100vw, 100vh) / 10);
+}
+@keyframes rotateZ {
+  from {
+    transform: translate(-50%, -50%) rotateZ(var(--rotation, 0deg));
+  }
+  to {
+    transform: translate(-50%, -50%)
+      rotateZ(calc(var(--rotation, 0deg) + 360deg));
+  }
 }

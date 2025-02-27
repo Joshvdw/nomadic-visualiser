@@ -1,6 +1,6 @@
 ## TO RUN
 
-- To run server, run command: "http-server"
+- To run server, run command: `http-server`
 - Navigate to: [http://localhost:8080/](http://localhost:8080/)
 
 ## TO CHANGE AUDIO
