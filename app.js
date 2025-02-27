@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var media = ["music/audio-test.mp3"],
+  var media = ["music/Cosmic Swamp [Josh Master].wav"], // COSMIC SWAMP
+    // ["music/Seaside Serenade [Josh Master].wav"], // SEASIDE SERENADE
     fftSize = 2048, // determines how many frequency bins are used to analyze the audio signal
     // [32, 64, 128, 256, 512, 1024, 2048] // use one of these lower values if running into performance issues
     background_color = "rgba(0, 0, 1, 1)",
@@ -339,13 +340,14 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.beginPath();
     ctx.lineWidth = 1;
 
-    ctx.arc(cx, cy, avg + avg_circle.radius, 0, PI_TWO, false);
+    const scalingFactor = 1.15; // Adjust this value to control the size of circle
+    const radius = (avg + avg_circle.radius) * scalingFactor;
 
+    ctx.arc(cx, cy, radius, 0, PI_TWO, false);
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
   }
-
   function drawWaveform() {
     var i,
       len,
@@ -379,13 +381,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx.rotate(rotation);
     ctx.translate(-cx, -cy);
 
+    // Add a scaling factor for the waveform
+    const waveformScalingFactor = 1.2; // Adjust this value to control the size
+
     ctx.moveTo(points[0].dx, points[0].dy);
 
     for (i = 0, len = TOTAL_POINTS; i < len - 1; i++) {
       p = points[i];
       value = timeData[i];
-      p.dx = p.x + value * sin(PI_HALF * p.angle);
-      p.dy = p.y + value * cos(PI_HALF * p.angle);
+
+      // Scale the waveform points
+      p.dx = p.x + value * sin(PI_HALF * p.angle) * waveformScalingFactor;
+      p.dy = p.y + value * cos(PI_HALF * p.angle) * waveformScalingFactor;
+
       xc = (p.dx + points[i + 1].dx) / 2;
       yc = (p.dy + points[i + 1].dy) / 2;
 
@@ -394,8 +402,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     value = timeData[i];
     p = points[i];
-    p.dx = p.x + value * sin(PI_HALF * p.angle);
-    p.dy = p.y + value * cos(PI_HALF * p.angle);
+
+    // Scale the last waveform point
+    p.dx = p.x + value * sin(PI_HALF * p.angle) * waveformScalingFactor;
+    p.dy = p.y + value * cos(PI_HALF * p.angle) * waveformScalingFactor;
+
     xc = (p.dx + points[0].dx) / 2;
     yc = (p.dy + points[0].dy) / 2;
 

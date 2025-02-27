@@ -3,6 +3,12 @@
 - To run server, run command: `http-server`
 - Navigate to: [http://localhost:8080/](http://localhost:8080/)
 
+## TO RECORD
+
+- Make browser full window on retina screen with no bookmarks (use Nomadic Visualiser Chrome Responsive Inspect setting)
+- Open OBS and hit Start Recording (Default settings should be correct)
+- Potentially adjust size of vinyl to ensure that circle animation behind is just peaking out from behind vinyl
+
 ## TO CHANGE AUDIO
 
 - Add audio files to the `music` folder.
