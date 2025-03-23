@@ -22,4 +22,9 @@
 ## TO CHANGE BG
 
 - Edit the hex color for the `overlay` class in the CSS.
-- Edit the `img` URL for the `texture_overlay` class in the CSS.
+- Edit the `video` URL
+
+## Extra
+- potentially adjust video opacity
+- potentially adjust vinyl speed by editing vinyl spin rotation speed (10s original)
+

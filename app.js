@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var media = ["music/Cosmic Swamp [Josh Master].wav"], // COSMIC SWAMP
-    // ["music/Seaside Serenade [Josh Master].wav"], // SEASIDE SERENADE
-    fftSize = 2048, // determines how many frequency bins are used to analyze the audio signal
+  var media = ["music/Seaside Serenade - FINAL MASTER.wav"],
+    fftSize = 1024, // determines how many frequency bins are used to analyze the audio signal
     // [32, 64, 128, 256, 512, 1024, 2048] // use one of these lower values if running into performance issues
     background_color = "rgba(0, 0, 1, 1)",
     background_gradient_color_1 = "#000011",
@@ -177,7 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
           playAudio();
 
           // start spinning vinyl
-          vinyl.style.animation = "rotateZ 10s linear infinite";
+          vinyl.style.animation = "rotateZ 10s linear infinite"; // original speed
+          // vinyl.style.animation = "rotateZ 6.67s linear infinite"; // 1.5x faster
           vinyl.style.animationPlayState = "running";
         },
         function (e) {
@@ -228,10 +228,12 @@ document.addEventListener("DOMContentLoaded", function () {
     pausedAt ? asource.start(0, pausedAt / 1000) : asource.start();
 
     // Start spinning vinyl and albumArt
-    vinyl.style.animation = "rotateZ 10s linear infinite";
+    vinyl.style.animation = "rotateZ 10s linear infinite"; // original speed
+    // vinyl.style.animation = "rotateZ 5s linear infinite"; // 1.5x faster
     vinyl.style.animationPlayState = "running";
 
-    albumArt.style.animation = "rotateZ 10s linear infinite";
+    albumArt.style.animation = "rotateZ 10s linear infinite"; // original speed
+    // albumArt.style.animation = "rotateZ 5s linear infinite"; // 1.5x faster
     albumArt.style.animationPlayState = "running";
 
     animate();
